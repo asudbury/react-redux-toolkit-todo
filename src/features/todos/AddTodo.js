@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, func } from 'prop-types';
 import { TextField, Button, Grid } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
@@ -45,9 +45,9 @@ function AddTodo(props) {
 }
 
 AddTodo.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  handleAddTodo: PropTypes.func.isRequired
+  input: string.isRequired,
+  setInput: func.isRequired,
+  handleAddTodo: func.isRequired
 };
 
 export default AddTodo;

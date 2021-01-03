@@ -6,7 +6,7 @@ function Header() {
     <AppBar color="primary" position="static" style={{ height: 64 }}>
       <Toolbar>
         <Typography variant="h6" align="center">
-          React Redux Todo App
+          React Redux Toolkit Todo App
         </Typography>
       </Toolbar>
     </AppBar>

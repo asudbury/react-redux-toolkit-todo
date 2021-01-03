@@ -1,11 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { logger } from 'redux-logger';
-import rootReducer from '../reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import todosReducer from '../features/todos/todosSlice';
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(logger))
-);
+const store = configureStore({
+  reducer: todosReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+});
 
 export default store;

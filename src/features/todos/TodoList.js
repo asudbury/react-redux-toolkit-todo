@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { arrayOf, shape, number, string, bool, func } from 'prop-types';
 import {
   List,
   ListItem,
@@ -12,11 +12,11 @@ import {
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
 function TodoList(props) {
-  const { todos, handleCompleteTodo, handleDeleteTodo } = props;
+  const { todosList, handleCompleteTodo, handleDeleteTodo } = props;
 
   return (
     <List>
-      {todos.map((todo) => (
+      {todosList.map((todo) => (
         <ListItem key={todo.id} button divider>
           <Checkbox
             aria-label="Complete Todo"
@@ -40,9 +40,19 @@ function TodoList(props) {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.shape([]).isRequired,
-  handleCompleteTodo: PropTypes.func.isRequired,
-  handleDeleteTodo: PropTypes.func.isRequired
+  todosList: arrayOf(
+    shape({
+      id: number.isRequired,
+      task: string.isRequired,
+      complete: bool.isRequired
+    })
+  ),
+  handleCompleteTodo: func.isRequired,
+  handleDeleteTodo: func.isRequired
+};
+
+TodoList.defaultProps = {
+  todosList: []
 };
 
 export default TodoList;
